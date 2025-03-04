@@ -1,0 +1,249 @@
+\documentclass[12pt]{article}
+
+% ---------------------------------
+%  PODSTAWOWE USTAWIENIA 
+% ---------------------------------
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% ---------------------------------
+%  FONTY: Fira Code (lub Fira Mono)
+% ---------------------------------
+% Jeśli masz zainstalowany pakiet FiraCode:
+\usepackage{FiraCode}
+% Jeżeli FiraCode nie działa, można użyć:
+% \usepackage[scaled]{FiraMono}
+
+% ---------------------------------
+%  KOLORYSTYKA TOKYO NIGHT
+% ---------------------------------
+\usepackage{xcolor}
+\definecolor{tokyoNightBG}{HTML}{1A1B26}    % Głęboki granatowo-fioletowy
+\definecolor{tokyoNightFG}{HTML}{C0CAF5}    % Jasny, lekko fioletowy kolor tekstu
+\definecolor{tokyoNightRed}{HTML}{F7768E}   % Różowy/czerwony odcień
+\definecolor{tokyoNightGreen}{HTML}{9ECE6A} % Zieleń
+\definecolor{tokyoNightBlue}{HTML}{7AA2F7}  % Niebieski
+\definecolor{tokyoNightYellow}{HTML}{E0AF68}% Żółtawy/pomarańczowy
+
+% Tło strony i kolor domyślny tekstu
+\pagecolor{tokyoNightBG}
+\color{tokyoNightFG}
+
+% ---------------------------------
+%  NAGŁÓWKI I STOPKI (fancyhdr)
+% ---------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{tokyoNightGreen}{Algorithms & Wasted Souls}}
+\fancyhead[R]{\textcolor{tokyoNightGreen}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------------------------------
+%  STYL NAGŁÓWKÓW SEKCJI (titlesec)
+% ---------------------------------
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{tokyoNightRed}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{tokyoNightBlue}}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{tokyoNightYellow}}{\thesubsubsection.}{0.5em}{}
+
+% ---------------------------------
+%  MINTED: KOLOROWANIE SKŁADNI
+% ---------------------------------
+\usepackage{minted}
+% Wybieramy ciemny styl w miarę zbliżony do Tokyo Night:
+\usemintedstyle{dracula}
+
+% Definiujemy "środowisko" pseudokodu, używając wbudowanych reguł kolorowania C++
+\newminted{cpp}{
+  linenos,
+  breaklines,
+  frame=single,
+  framesep=5pt,
+  baselinestretch=1.0,
+  fontsize=\small
+}
+
+% --- Tytuł i data ---
+\title{\textbf{\huge Lista Zadań Nr 0 \\[0.3em]
+{\Large Algorytmy i Struktury Danych}}}
+\author{\textbf{\Large Wykładowca: Dr Obskurny}}
+\date{\textbf{\Large \today}}  % automatyczna, bieżąca data kompilacji
+
+\begin{document}
+
+\maketitle
+
+\vspace{2em}
+\begin{center}
+  \textit{\large „Neonowe zaułki nocnego Tokio mogą pomieścić i Big-O, i Big-$\Theta$, 
+  ale czy pomieszczą naszą rozpacz?”}
+\end{center}
+\vspace{2em}
+
+% ---------------------------------
+%  TREŚĆ DOKUMENTU
+% ---------------------------------
+
+\section{Rozgrzewka (0 pkt)}
+Przed Tobą kilka zadań. Odszukaj w sobie siłę, by je wypełnić, bo to tylko preludium 
+do prawdziwego (algorytmicznego) mroku.
+
+\section{Złożoności (1 pkt)}
+Określ, z dokładnością do $\Theta$, złożoność następujących fragmentów (pseudokodu):
+
+\begin{cppcode}
+for (int i = 1; i <= n; i++) {
+    int j = i;
+    while (j < n) {
+        sum = P(i, j);
+        j = j + 1;
+    }
+}
+\end{cppcode}
+
+\begin{cppcode}
+for (int i = 1; i <= n; i++) {
+    int j = i;
+    while (j < n) {
+        sum = P(i, j);
+        j = j + j;
+    }
+}
+\end{cppcode}
+
+Gdzie:
+\begin{itemize}
+  \item $P(i,j) = \Theta(1)$,
+  \item $P(i,j) = \Theta(j)$.
+\end{itemize}
+
+\section{Szybkie potęgowanie (1 pkt)}
+Pseudokod obliczający $x^n$ przez kolejne potęgi dwójkowe (dyskretnie ciesząc się 
+logarytmiczną złożonością):
+
+\begin{cppcode}
+int fastPower(int x, int n) {
+    int result = 1;
+    int currentPower = x;
+    int k = n;
+
+    while (k > 0) {
+        if (k % 2 == 1) {
+            result = result * currentPower;
+        }
+        currentPower = currentPower * currentPower;
+        k = k / 2;
+    }
+    return result;
+}
+\end{cppcode}
+
+Rozważ złożoność w modelu jednorodnym i z uwzględnieniem kosztu mnożeń 
+(czyli modelu logarytmicznego), by docenić, że nawet algorytmy mają 
+drugie dno.
+
+\section{Rekurencja w drzewach (1 pkt)}
+Rekurencyjne liczenie liczby wierzchołków i średnicy w drzewie binarnym:
+
+\begin{cppcode}
+int countNodes(Node* T) {
+    if (T == nullptr) 
+        return 0;
+    return 1 + countNodes(T->left) + countNodes(T->right);
+}
+\end{cppcode}
+
+\begin{cppcode}
+int treeDiameter(Node* T) {
+    if (T == nullptr) 
+        return 0;
+    int leftHeight  = treeHeight(T->left);
+    int rightHeight = treeHeight(T->right);
+
+    // Średnica przechodząca przez bieżący węzeł
+    int diameterThroughRoot = leftHeight + rightHeight;
+
+    // Średnica w poddrzewach
+    int leftDiameter  = treeDiameter(T->left);
+    int rightDiameter = treeDiameter(T->right);
+
+    return max(diameterThroughRoot, max(leftDiameter, rightDiameter));
+}
+\end{cppcode}
+
+Zakładamy, że `treeHeight` zwraca wysokość drzewa.  
+Tak, wciąż czekamy, aż odległość w drzewie zrówna się z odległością 
+do zrozumienia sensu bytu.
+
+\section{Operacje na drzewie BST (1 pkt)}
+Wstawianie, usuwanie i znajdowanie następnika w drzewie BST (pseudokod inspirowany C++):
+
+\begin{cppcode}
+Node* insertBST(Node* T, int key) {
+    if (T == nullptr) {
+        T = new Node(key);
+    } else if (key < T->value) {
+        T->left = insertBST(T->left, key);
+    } else {
+        T->right = insertBST(T->right, key);
+    }
+    return T;
+}
+\end{cppcode}
+
+\begin{cppcode}
+Node* deleteBST(Node* T, int key) {
+    if (T == nullptr) 
+        return T;
+    
+    if (key < T->value) {
+        T->left = deleteBST(T->left, key);
+    } else if (key > T->value) {
+        T->right = deleteBST(T->right, key);
+    } else {
+        // Znaleźliśmy węzeł do usunięcia
+        if (T->left == nullptr) {
+            Node* temp = T->right;
+            delete T;
+            return temp;
+        } else if (T->right == nullptr) {
+            Node* temp = T->left;
+            delete T;
+            return temp;
+        } else {
+            // Węzeł ma dwoje dzieci
+            Node* successor = findMin(T->right);
+            T->value = successor->value;
+            T->right = deleteBST(T->right, successor->value);
+        }
+    }
+    return T;
+}
+\end{cppcode}
+
+\begin{cppcode}
+Node* findSuccessor(Node* T, int key) {
+    Node* successor = nullptr;
+    Node* current = T;
+    while (current != nullptr) {
+        if (key < current->value) {
+            successor = current;
+            current = current->left;
+        } else {
+            current = current->right;
+        }
+    }
+    return successor;
+}
+\end{cppcode}
+
+(Czy to rozświetla mroki BST? Może tylko odrobinę – ale zawsze coś!)
+
+\end{document}
+

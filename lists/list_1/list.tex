@@ -1,0 +1,1123 @@
+\documentclass[12pt]{article}
+
+% --- Pakiety wstępne ---
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{CormorantGaramond} % Albo inna mroczna/gotycka/romantyczna czcionka
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{minted}
+\usemintedstyle{dracula}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+% --- Kolorystyka Tokyo Night ---
+% Tło i podstawowy kolor tekstu
+\definecolor{tokyoNightBG}{HTML}{1A1B26} % Głęboki granatowo-fioletowy
+\definecolor{tokyoNightFG}{HTML}{C0CAF5} % Jasny, lekko fioletowy kolor tekstu
+
+% Kolory akcentów (możesz je używać do linków, nagłówków itp.)
+\definecolor{tokyoNightRed}{HTML}{F7768E} % Różowy/czerwony odcień
+\definecolor{tokyoNightGreen}{HTML}{9ECE6A} % Zieleń
+\definecolor{tokyoNightBlue}{HTML}{7AA2F7} % Niebieski
+\definecolor{tokyoNightYellow}{HTML}{E0AF68} % Żółtawy/orange
+
+% Ustawiamy kolory strony i tekstu
+\pagecolor{tokyoNightBG}
+\color{tokyoNightFG}
+\renewcommand{\thealgorithm}{}
+% --- Nagłówki i stopki ---
+\pagestyle{fancy}
+\fancyhf{} % wyczyszczone nagłówki i stopki
+\fancyhead[L]{\textcolor{tokyoNightGreen}{Łukasz Stodółka}}
+\fancyhead[R]{\textcolor{tokyoNightGreen}{Lista 0 str. \thepage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- Tytuły sekcji w stylu Tokyo Night ---
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{tokyoNightRed}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries\color{tokyoNightBlue}}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries\color{tokyoNightYellow}}{\thesubsubsection.}{0.5em}{}
+
+% --- Tytuł dokumentu ---
+\title{\textbf{\huge Lista Zadań Nr 0 \\ {\large Algorytmy i Struktury Danych}}}
+\author{\textbf{\Large Łukasz Stodółka}}
+
+\begin{document}
+	\maketitle
+
+	\section{Złożoności (1 pkt)}
+	Określ, z dokładnością do $\Theta$ złożoność (przy kryterium jednorodnym) następujących
+	fragmentów kodu. Dla:
+	\begin{itemize}
+		\item $P(i,j) = \Theta(1)$,
+
+		\item $P(i,j) = \Theta(j)$.
+	\end{itemize}
+	\textcolor{tokyoNightGreen}{\textbf{\large Rozwiązanie:}} \\\\ \textbf{Kod 1:}
+
+    \begin{algorithm}
+        \caption{alg($n$)}
+        \begin{algorithmic}[1]
+        \For{$i \gets 1$ \textbf{to} $n$}
+            \State $j \gets i$
+            \While{$j < n$}
+                \State $sum \gets P(i,j)$
+                \State $j \gets j + 1$
+            \EndWhile
+        \EndFor
+        \end{algorithmic}
+    \end{algorithm}
+
+    \begin{itemize}
+  \item W pierwszej pętli wykonujemy $1$ operację:
+    \begin{itemize}
+      \item przypisanie $j = i$, co kosztuje $1$.
+    \end{itemize}
+  \item Następnie wykonujemy pętlę, która iteruje $(n - i - 1)$ razy. W każdej iteracji wykonujemy $2$ operacje:
+    \begin{itemize}
+      \item przypisanie $P(i, j)$, które kosztuje $P(i, j)$,
+      \item przypisanie $j = j + i$, które kosztuje $1$.
+    \end{itemize}
+  \item Łączny koszt pętli wewnętrznej wynosi:
+    \[
+        \sum_{j=i}^{n-1}(P(i,j) + 1) = n - i + \sum_{j=i}^{n-1}(P(i, j))
+    \]
+\end{itemize}
+	 Czyli łącznie algorytm potrzebuje: 
+    $$
+    \sum_{i=1}^{n}( 1 + n - i + \sum_{j=i}^{n-1}(P(i,j))
+    $$
+    Dla $P(i,j)$ w złożoności $\Theta(1)$ koszt $P(i, j)$ wynosi $1$ więc algorytm wykonuje:
+	\[
+		\sum_{i=1}^{n} (2n - 2i + 1) = 2n^{2} - n^{2} -n + n = n^{2}
+	\]
+	operacji czyli w złożoności 
+	\[
+		\Theta(n^{2}).
+	\]
+    Dla $P(i,j)$ w złożoności $\Theta(j)$ koszt $P(i, j)$ wynosi $j$ a j jest uzależnione od iteracji pętli koszt P(i, j) dla ustalonego $i$ wyniesie:
+	\[
+    \sum_{j=i}^{n-1}(j) = \frac{(n-1)n}{2} - \frac{(i-1)i}{2}
+	\]
+    Podstawiając: 
+    \[
+        \sum_{i=1}^{n} (1 + n - i + \frac{(n-1)n}{2} - \frac{(i-1)i}{2}) = \frac{1}{2} \sum_{i=1}^{n}(n^2 - i^2 + n - i + 2 ) =
+    \]
+    \[
+        =\frac{1}{2} \left[ n^3 - \frac{n(n+1)(2n+1)}{6} + n^2 - \frac{n(n+1)}{2} + 2n \right]=
+    \]
+    \[
+        =\frac{n^3 + 2n}{3}
+    \]
+	operacji czyli w złożoności 
+	\[
+		\Theta(n^{3}).
+	\]
+
+	\newpage
+	\textbf{Kod 2:}
+     \begin{algorithm}
+        \caption{alg($n$)}
+        \begin{algorithmic}[1]
+        \For{$i \gets 1$ \textbf{to} $n$}
+            \State $j \gets i$
+            \While{$j < n$}
+                \State $sum \gets P(i,j)$
+                \State $j \gets j + j$
+            \EndWhile
+        \EndFor
+        \end{algorithmic}
+    \end{algorithm}
+
+\begin{enumerate}
+    \item \textbf{Pętla zewnętrzna:} \\
+    Dla każdego \(i\) od \(1\) do \(n\) wykonujemy przypisanie:
+    \[
+    j \gets i,
+    \]
+    co kosztuje \(1\) operację.
+
+    \item \textbf{Pętla wewnętrzna:} \\
+    Wewnątrz pętli mamy:
+    \begin{itemize}
+        \item Operację: \(sum \gets P(i,j)\),
+        \item Operację: \(j \gets j + j\) (czyli podwajanie \(j\)).
+    \end{itemize}
+    Warto zauważyć, że zamiast standardowej inkrementacji \(j\), tutaj \(j\) przyjmuje kolejne wartości:
+    \[
+    i,\; 2i,\; 4i,\; 8i,\; \dots
+    \]
+    Pętla wewnętrzna trwa tak długo, jak długo \(j < n\). Liczbę iteracji dla danego \(i\) oznaczamy przez \(k\) i mamy:
+    \[
+    2^k \cdot i < n \quad \Longrightarrow \quad k < \log_2\frac{n}{i}.
+    \]
+    Dlatego liczba iteracji wynosi:
+    \[
+    \lceil \log_2(n/i) \rceil.
+    \]
+    
+    \item \textbf{Koszt jednej iteracji wewnętrznej:} \\
+    W każdej iteracji wykonujemy:
+    \[
+    P(i,j) \quad \text{oraz} \quad j \gets j+j.
+    \]
+    Zakładamy, że koszt wywołania \(P(i,j)\) jest ogólnie zależny od \(i\) i \(j\) i oznaczamy go przez \(P(i,j)\), natomiast operacja przypisania \(j \gets j+j\) kosztuje \(1\).
+
+    \item \textbf{Całkowity koszt algorytmu:} \\
+    Dla ustalonego \(i\):
+    \begin{itemize}
+        \item Koszt przypisania \(j = i\) wynosi \(1\).
+        \item Koszt pętli wewnętrznej wynosi sumę kosztów poszczególnych iteracji. Ponieważ \(j\) przyjmuje wartości \(j = 2^k \cdot i\) dla \(k = 0, 1, 2, \dots, \lceil \log_2(n/i) \rceil - 1\), to koszt każdej iteracji wynosi:
+        \[
+        P(i,2^k\cdot i) + 1.
+        \]
+    \end{itemize}
+    Zatem łączny koszt dla danego \(i\) to:
+    \[
+    1 + \sum_{k=0}^{\lceil \log_2(n/i) \rceil - 1} \Bigl(P(i,2^k\cdot i) + 1\Bigr).
+    \]
+    
+    Sumując koszty dla wszystkich \(i\) od \(1\) do \(n\), otrzymujemy ostateczny wzór:
+    \[
+    \sum_{i=1}^{n}\left( 1 + \sum_{k=0}^{\lceil \log_2(n/i) \rceil - 1} \Bigl(P(i,2^k\cdot i) + 1\Bigr) \right).
+    \]
+     Dla $P(i,j)$ w złożoności $\Theta(1)$ koszt $P(i, j)$ wynosi $1$ więc algorytm wykonuje:
+     $$\sum_{i=1}^{n}\left( 1 + \sum_{k=0}^{\lceil \log_2(n/i) \rceil - 1} (2) \right) = n + 2\sum_{i=1}^{n}(\lceil \log_2(n) - \log_2(i) \rceil) = n + 2n \lceil\log_2(n)\rceil - 2\sum_{i=1}^{n}(\lfloor \log_2(i) \rfloor - \delta)$$
+     Dla $\{\log_2(i)\} < \{\log_2(n)\}$
+     $$\delta = 1$$
+     W przeciwnym razie 
+     $$\delta = 0$$
+    Rozważmy 
+     $$\sum_{i=1}^{n} \lfloor \log_2 i \rfloor 
+\leq \int_1^n \log_2 x \,dx 
+= \frac{1}{\ln 2} \int_1^n \ln x \,dx 
+= \frac{n \ln n - n + 1}{\ln 2} 
+\approx \frac{n \ln n - n}{\ln 2}.$$
+
+	widać więc, że w ogólności algorytm będzie w złożoności: 
+	\[
+		\Theta(nlog_2(n)).
+	\]
+    Dla $P(i, j)$ w złożoności $\Theta(j)$ mamy:
+    \[
+    \sum_{i=1}^{n}\left( 1 + \sum_{k=0}^{\lceil \log_2(n/i) \rceil - 1} \Bigl(2^k\cdot i + 1\Bigr) \right) = \frac{\left(2^{\lceil \log_2(n/i) \rceil} - 1\right) n(n+1)}{2} + n\left(1 + \lceil \log_2(n/i) \rceil\right).
+    \]
+
+
+Rozważamy sumę
+\[
+S(n) = \sum_{i=1}^{n} \Bigl(1 + \sum_{k=0}^{\lceil \log_2(\tfrac{n}{i})\rceil - 1} \bigl(2^k \cdot i + 1\bigr)\Bigr).
+\]
+
+Niech
+\[
+m = \Bigl\lceil \log_2\!\bigl(\tfrac{n}{i}\bigr)\Bigr\rceil.
+\]
+Wówczas wewnętrzna suma:
+\[
+\sum_{k=0}^{m-1} \bigl(2^k \cdot i + 1\bigr)
+= \sum_{k=0}^{m-1} 2^k \cdot i + \sum_{k=0}^{m-1} 1
+= i \sum_{k=0}^{m-1} 2^k + m
+= i\bigl(2^m - 1\bigr) + m.
+\]
+Zatem dla każdego \(i\):
+\[
+1 + \sum_{k=0}^{m-1} \bigl(2^k \cdot i + 1\bigr)
+= 1 + i\,(2^m - 1) + m.
+\]
+
+Cała suma \(S(n)\) staje się więc
+\[
+S(n)
+= \sum_{i=1}^{n} \Bigl(1 + i\,\bigl(2^{\lceil \log_2(\tfrac{n}{i})\rceil} - 1\bigr) + \lceil \log_2(\tfrac{n}{i})\rceil\Bigr).
+\]
+
+Największy wkład w tę sumę pochodzi od wyrażenia
+\[
+i \,\cdot 2^{\lceil \log_2(\tfrac{n}{i})\rceil}.
+\]
+Zauważmy, że
+\[
+\tfrac{n}{i}
+\;\le\;
+2^{\lceil \log_2(\tfrac{n}{i})\rceil}
+\;\le\;
+2 \,\cdot \tfrac{n}{i}.
+\]
+Stąd
+\[
+n
+\;\le\;
+i \cdot 2^{\lceil \log_2(\tfrac{n}{i})\rceil}
+\;\le\;
+2n.
+\]
+Czyli 
+$$ n + n^2 + \sum_{i=1}^{n}\left( \lceil \log_2(n/i) \rceil\right) \leq S(n) \leq n + 2n^2 + \sum_{i=1}^{n}\left( \lceil \log_2(n/i) \rceil\right)$$
+Zarówno dolne jak i górne ograniczenie ma złożoność $\Theta(n^2)$ 
+A zatem algorytm również ma złożoność:
+\[
+\Theta(n^2).
+\]
+
+\end{enumerate}
+
+	\newpage
+	\section{Szybkie potęgowanie (1 pkt)}
+	Zapisz w pseudokodzie algorytm szybkiego potęgowania liczby $x$, który oblicza
+	$x^{n}$ przez wymnożenie odpowiednich potęg dwójkowych liczby $x$ (tj. potęg postaci
+	$x^{2^k}$). Zadbaj, by Twój algorytm używał stałej liczby komórek pamięci. Oszacuj
+	jego złożoność przy kryterium jednorodnym i przy kryterium logarytmicznym. \\\\
+	\textcolor{tokyoNightGreen}{\textbf{\large Rozwiązanie:}}
+	\begin{algorithmic}
+		[1] \Function{FastPower}{$x, n$} \State $result \gets 1$ \State $power \gets
+		x$ \While{$n > 0$} \If{$n \bmod 2 = 1$} \State $result \gets result \times po
+		wer$ \EndIf \State $power \gets power \times power$ \State $n \gets \lfloor n
+		/2 \rfloor$ \EndWhile \State \Return $result$ \EndFunction
+	\end{algorithmic}
+
+    \section*{Analiza złożoności}
+\begin{enumerate}
+    \item \textbf{Kryterium jednorodne} -- każda operacja kosztuje 1.
+    \item \textbf{Kryterium logarytmiczne (bitowe)} -- koszt zależy od wielkości liczb.
+\end{enumerate}
+
+\subsection*{1. Analiza w modelu jednorodnym}
+
+W tym podejściu przyjmujemy, że:
+\begin{itemize}
+    \item Każde przypisanie (np. \texttt{result <- 1}) kosztuje 1.
+    \item Każda operacja arytmetyczna (mnożenie, dzielenie, \texttt{mod}) kosztuje 1.
+    \item Każde porównanie (np. \texttt{n > 0}, \texttt{n mod 2 = 1}) kosztuje 1.
+\end{itemize}
+
+\paragraph{Koszty inicjalizacji (linijki 2--3).}
+\begin{itemize}
+    \item \texttt{result <- 1} : 1 operacja (przypisanie).
+    \item \texttt{power <- x} : 1 operacja (przypisanie).
+\end{itemize}
+Razem: 2 operacje przed startem pętli.
+
+\paragraph{Pętla \texttt{while n > 0 do} (linijka 4).}
+Pętla działa tak długo, aż \texttt{n} będzie równe 0. W każdej iteracji \texttt{n} jest dzielone przez 2 (zaokrąglenie w dół), więc łączna liczba iteracji wynosi w przybliżeniu
+\[
+\lfloor \log_2(n) \rfloor + 1 \;\;\approx\; \Theta(\log n).
+\]
+
+\paragraph{Wewnątrz pętli (każda iteracja):}
+\begin{enumerate}
+    \item \texttt{n > 0} -- sprawdzenie warunku pętli: 1 operacja (porównanie).
+    \item \texttt{if n mod 2 = 1 then}:
+    \begin{itemize}
+        \item \texttt{n mod 2} : 1 operacja,
+        \item porównanie z 1 : 1 operacja,
+        \item \texttt{result <- result * power} (jeśli warunek spełniony):
+        \begin{itemize}
+            \item 1 operacja mnożenia,
+            \item 1 operacja przypisania.
+        \end{itemize}
+        (łącznie 2 operacje, ale tylko gdy \texttt{n mod 2 = 1}). 
+    \end{itemize}
+    \item \texttt{power <- power * power}:
+    \begin{itemize}
+        \item 1 operacja mnożenia,
+        \item 1 operacja przypisania.
+    \end{itemize}
+    \item \texttt{n <- floor(n/2)}:
+    \begin{itemize}
+        \item 1 operacja dzielenia całkowitego,
+        \item 1 operacja przypisania.
+    \end{itemize}
+\end{enumerate}
+
+\noindent
+Podsumowując koszty w 1 iteracji (zakładając, że warunek \texttt{n mod 2 = 1} może być spełniony):
+\[
+\underbrace{1}_{\text{war. while}} 
++ \underbrace{(1 + 1)}_{\texttt{n mod 2, porównanie}} 
++ \underbrace{(1 + 1)}_{\texttt{result <- ...}} 
++ \underbrace{(1 + 1)}_{\texttt{power <- ...}}
++ \underbrace{(1 + 1)}_{\texttt{n <- floor(n/2)}} 
+= 9.
+\]
+Można zauważyć, że jeśli \texttt{n mod 2} nie jest równe 1, to oszczędzamy 2 operacje w danej iteracji, ale w analizie \(\Theta(\cdot)\) i tak przyjmujemy stałą liczbę operacji na iterację.
+
+\paragraph{Łączny koszt:}
+\[
+2 \;+\; 9 \cdot \bigl(\lfloor \log_2(n) \rfloor + 1\bigr) 
+\in \Theta(\log n).
+\]
+
+\subsection*{2. Analiza w modelu logarytmicznym (bitowym)}
+
+W tym modelu zakładamy, że:
+\begin{itemize}
+    \item Koszt operacji na liczbach całkowitych zależy od rozmiaru tych liczb (w bitach).
+    \item Mnożenie liczb o długości \(\ell\) bitów może mieć koszt nawet \(\Theta(\ell^2)\) albo \(\Theta(\ell \log \ell)\).
+\end{itemize}
+
+\paragraph{Liczba iteracji pętli.}
+Niezależnie od rozmiaru liczb, pętla \texttt{while} wykonuje się \(\Theta(\log n)\) razy (bo \texttt{n} jest dzielone przez 2 w każdej iteracji).
+
+\paragraph{Rozmiary liczb.}
+\begin{itemize}
+    \item \texttt{power} rośnie wykładniczo, ponieważ w każdej iteracji jest podnoszone do kwadratu: \(\texttt{power} \leftarrow \texttt{power}^2\).
+    \item \texttt{result} w niektórych iteracjach (gdy \texttt{n mod 2 = 1}) jest mnożone przez \texttt{power}.
+\end{itemize}
+Zatem wartości \texttt{power} i \texttt{result} mogą stać się bardzo duże, a koszt mnożenia nie jest już stały.
+
+\paragraph{Oszacowanie kosztu.}
+Jeśli przyjmiemy, że \(\texttt{power}\) (i ewentualnie \texttt{result}) może osiągnąć wartości do \(\approx x^n\) (w skrajnych przypadkach), to długość w bitach jest rzędu \(\log (x^n) = n \log x\). Wówczas mnożenie może kosztować co najmniej \(\Theta((n \log x)^\alpha)\) dla pewnej \(\alpha \ge 1\), zależnie od implementacji mnożenia. 
+
+Ponieważ takich mnożeń (w pętli) mamy \(\Theta(\log n)\), to końcowa złożoność może wynieść:
+\[
+\Theta\bigl(\log n \times \text{koszt mnożenia liczb wielkości } x^n\bigr).
+\]
+Dokładna postać zależy od szczegółów implementacyjnych i przyjętego modelu mnożenia. 
+
+\paragraph{Wniosek:}
+\begin{itemize}
+    \item W \textbf{kryterium jednorodnym} algorytm ma złożoność \(\Theta(\log n)\).
+    \item W \textbf{kryterium logarytmicznym/bitowym} ogólny koszt jest wyższy od \(\Theta(\log n)\) i może zależeć od wartości \(\texttt{x}\) i \(\texttt{n}\). Typowo spotyka się zapisy w stylu:
+    \[
+      \Theta\bigl(\log n \cdot M(\text{size of }x^n)\bigr),
+    \]
+    gdzie \(M(\cdot)\) to koszt mnożenia liczb o danej długości bitowej.
+\end{itemize}
+
+\newpage
+	\section{Rekurencja w drzewach (1 pkt)}
+	Napisz w pseudokodzie rekurencyjne funkcje w pseudokodzie, które dla danego
+	drzewa binarnego $T$ obliczają:
+	\begin{itemize}
+		\item liczbę wierzchołków w $T$;
+
+		\item maksymalną odległość między wierzchołkami w $T$.
+	\end{itemize}
+	\textcolor{tokyoNightGreen}{\textbf{\large Rozwiązanie:}}
+	\vspace{1em}
+	\begin{algorithm}
+	    \caption{Zliczanie wierzchołków}
+        \begin{algorithmic}[1]
+        \Function{CountNodes}{$T$} \If{$T = \text{null}$} \State \Return 0 \Else
+		\State \Return $1 + \text{CountNodes}(T.left) + \text{CountNodes}(T.right)$
+		\EndIf \EndFunction
+    \end{algorithmic}
+    \end{algorithm}
+\begin{algorithm}
+    \caption{Obliczanie średnicy drzewa}
+    \begin{algorithmic}[1]
+        \Function{diameterHelper}{$root, diameter$}
+            \If{$root = \textbf{null}$}
+                \State \Return $0$
+            \EndIf
+            \State $leftHeight \gets$ \Call{diameterHelper}{$root.left, diameter$}
+            \State $rightHeight \gets$ \Call{diameterHelper}{$root.right, diameter$}
+            \State $diameter \gets \max(diameter, leftHeight + rightHeight)$
+            \State \Return $1 + \max(leftHeight, rightHeight)$
+        \EndFunction
+        
+        \Function{diameter}{$root$}
+            \State $dia \gets 0$
+            \State \Call{diameterHelper}{$root, dia$}
+            \State \Return $dia$
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+\newpage
+	\section{Operacje na drzewie BST (1 pkt)}
+    Napisz w pseudokodzie procedury, które dla danego drzewa binarnych przeszukiwań \( T \):
+\begin{itemize}
+    \item wstawiają zadany klucz do \( T \);
+    \item usuwają wierzchołek z zadanym kluczem z \( T \);
+    \item dla danego klucza znajdują następny co do wielkości klucz w drzewie.
+\end{itemize}
+	\textcolor{tokyoNightGreen}{\textbf{\large Rozwiązanie:}}
+\begin{algorithm}
+\caption{Wstawianie klucza do drzewa BST}
+\begin{algorithmic}[1]
+\Function{Insert}{root, key}
+    \If{root == null}
+        \State \Return nowy węzeł(key)
+    \EndIf
+    \If{key < root.key}
+        \State root.left = Insert(root.left, key)
+    \Else
+        \If{key > root.key}
+            \State root.right = Insert(root.right, key)
+        \EndIf
+    \EndIf
+    \State \Return root
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Znalezienie następnego klucza w BST}
+\begin{algorithmic}[1]
+\Function{FindSuccessor}{root, key}
+    \State successor = null
+    \While{root != null}
+        \If{key < root.key}
+            \State successor = root
+            \State root = root.left
+        \Else
+            \State root = root.right
+        \EndIf
+    \EndWhile
+    \State \Return successor
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Usuwanie klucza z drzewa BST}
+\begin{algorithmic}[1]
+\Function{Remove}{root, key}
+    \If{root == null}
+        \State \Return root
+    \EndIf
+    \If{key < root.key}
+        \State root.left = Remove(root.left, key)
+    \Else
+        \If{key > root.key}
+            \State root.right = Remove(root.right, key)
+        \Else
+            \If{root.left == null}
+                \State \Return root.right
+            \Else
+                \If{root.right == null}
+                    \State \Return root.left
+                \EndIf
+            \EndIf
+            \State temp = MinValueNode(root.right)
+            \State root.key = temp.key
+            \State root.right = Remove(root.right, temp.key)
+        \EndIf
+    \EndIf
+    \State \Return root
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+\newpage
+
+\section{Algorytm macierzowy obliczania rekurencji}
+
+Rozważmy ciąg Fibonacciego zadany rekurencją:
+\[
+a_n = a_{n-1} + a_{n-2}.
+\]
+Rekurencję tę można przedstawić w postaci macierzowej. Definiujemy wektor:
+\[
+\begin{bmatrix} a_n \\ a_{n-1} \end{bmatrix},
+\]
+oraz macierz przejścia:
+\[
+A = \begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}.
+\]
+Wówczas mamy zależność:
+\[
+\begin{bmatrix} a_n \\ a_{n-1} \end{bmatrix} = A \begin{bmatrix} a_{n-1} \\ a_{n-2} \end{bmatrix}.
+\]
+Podnosząc macierz \(A\) do potęgi \(n-1\), otrzymujemy:
+\[
+\begin{bmatrix} a_n \\ a_{n-1} \end{bmatrix} = A^{n-1} \begin{bmatrix} a_1 \\ a_0 \end{bmatrix}.
+\]
+
+\section*{Uogólnienie dla ciągów liniowych}
+
+Rozważmy ciąg zadany rekurencją liniową rzędu \(k\):
+\[
+b_{n} = a_1 b_{n-1} + a_2 b_{n-2} + \dots + a_k b_{n-k}.
+\]
+Definiujemy wektor:
+\[
+\begin{bmatrix} 
+b_{n} \\ 
+b_{n-1} \\ 
+\vdots \\ 
+b_{n-k+1}
+\end{bmatrix}.
+\]
+Macierz towarzysząca ma postać:
+\[
+A_k =
+\begin{bmatrix} 
+a_1 & a_2 & \dots & a_k \\ 
+1   & 0   & \dots & 0   \\ 
+0   & 1   & \dots & 0   \\ 
+\vdots & \vdots & \ddots & \vdots \\ 
+0   & 0   & \dots & 1 
+\end{bmatrix}.
+\]
+Rekurencję można zapisać w postaci macierzowej:
+\[
+\begin{bmatrix} 
+b_{n} \\ 
+b_{n-1} \\ 
+\vdots \\ 
+b_{n-k+1}
+\end{bmatrix} = A_k \begin{bmatrix} 
+b_{n-1} \\ 
+b_{n-2} \\ 
+\vdots \\ 
+b_{n-k}
+\end{bmatrix}.
+\]
+Podnosząc macierz \(A_k\) do potęgi \(n-k+1\), otrzymujemy:
+\[
+\begin{bmatrix} 
+b_{n} \\ 
+b_{n-1} \\ 
+\vdots \\ 
+b_{n-k+1}
+\end{bmatrix} = A_k^{\, n-k+1} \begin{bmatrix} 
+b_{k} \\ 
+b_{k-1} \\ 
+\vdots \\ 
+b_{1}
+\end{bmatrix}.
+\]
+\section*{Rozszerzenie macierzy dla rekurencji z dodatkową stałą lub wielomianem}
+
+W standardowym rozwiązaniu rekurencji liniowych (bez składników stałych) stosuje się macierz o wymiarze \( k \times k \). Aby uwzględnić w równaniu dodatkowy składnik (np. stałą lub ogólnie wielomian \( P(n) \)), rozszerzamy wektor stanu o dodatkowe elementy. 
+
+\bigskip
+
+\textbf{1. Rozszerzenie wektora i macierzy:}
+
+Zamiast wektora o \( k \) elementach, rozważamy wektor o \( k+1 \) elementach, w którym na końcu umieszczamy liczbę 1. Odpowiadająca macierz przejścia staje się wtedy macierzą o wymiarze \( (k+1) \times (k+1) \). W takiej macierzy:
+\begin{itemize}
+    \item Pierwszy wiersz jest modyfikowany tak, aby uwzględniał dodatkowy składnik,
+    \item Ostatni wiersz zawiera jedynkę, co powoduje, że przy mnożeniu macierzy przez wektor, dolny element (stała 1) pozostaje niezmieniony.
+\end{itemize}
+
+\bigskip
+
+\textbf{2. Uogólnienie na wielomian \( P(n) \):}
+
+Jeśli mamy do czynienia z dodatkowym składnikiem w postaci wielomianu \( P(n) \) o stopniu \(\deg P\), możemy rozważać wektor stanu i macierz o wymiarach odpowiednio:
+\[
+k + \deg P + 1 \quad \text{oraz} \quad (k + \deg P + 1) \times (k + \deg P + 1).
+\]
+W wyniku działania \( A^n \) na taki wektor, na dole uzyskamy dodatkowo wartości:
+\[
+1,\; n,\; n^2,\; \dots,\; n^{\deg P}.
+\]
+Pierwszy wiersz macierzy zostaje ponownie odpowiednio zmodyfikowany, a dodatkowe wyrazy, takie jak \((n+1)^l\), można wyrazić jako kombinację liniową potęg \( n^l,\, n^{l-1},\, \dots,\, n,\, 1 \).
+
+\bigskip
+
+\textbf{3. Metoda różniczkowania (odejmowania) rekurencji:}
+
+Alternatywnie, można postąpić następująco:
+\begin{itemize}
+    \item Odejmujemy równanie rekurencyjne dla \( n \) od równania dla \( n+1 \).
+    \item Definiujemy nowy ciąg: 
+    \[
+    b_n := a_{n+1} - a_n.
+    \]
+    \item Otrzymaną rekurencję dla \( b_n \) (która nie zawiera dodatkowych stałych) rozwiązujemy standardowo.
+    \item Na końcu sumujemy ciąg \( b_n \), aby odzyskać ciąg \( a_n \). 
+\end{itemize}
+
+Można też zapisać wielomian charakterystyczny dla nowej rekurencji na \( a_n \) jako iloczyn wielomianu dla \( b_n \) oraz czynnika \( \pm (x-1) \).
+
+\bigskip
+
+\textbf{4. Ogólna postać rozwiązania i metoda anihilatorów:}
+
+Rozwiązanie rekurencji dla \( b_n \) ma postać kombinacji liniowej wyrazów \( n^l \lambda^n \), gdzie \( \lambda \) są pierwiastkami wielomianu charakterystycznego. W wyniku, ciąg \( a_n \) przyjmuje podobną postać, ale może zawierać dodatkowy składnik postaci \( n^l \). Dodatkowe wyrazy pojawiają się wtedy, gdy w rozwiązaniu \( b_n \) występują składniki \( 1,\, n,\, \dots,\, n^{l-1} \) (np. gdy \( b_n \) nie zawiera stałej – wtedy \( 1 \) nie jest pierwiastkiem wielomianu charakterystycznego).
+
+Metoda ta jest przykładem stosowania anihilatorów. Wprowadzamy operator przesunięcia \( E \), który przesuwa ciąg o jedno miejsce (czyli \( Ea_n = a_{n+1} \)). Szukamy wielomianu \( Q \) tak, aby ciąg \( a_n \) należał do jądra operatora \( Q(E) \). Procedura przebiega w dwóch krokach:
+\begin{enumerate}
+    \item Najpierw zastosujemy operator \( (E-1) \) dokładnie \(\deg P + 1\) razy, co redukuje problem do rekurencji bez dodatkowego składnika wielomianowego.
+    \item Następnie, do rozwiązania zwykłej rekurencji stosujemy wielomian charakterystyczny, podstawiając operator \( E \) w miejsce zmiennej.
+\end{enumerate}
+Iloczyn obu wielomianów daje operator \( Q(E) \). Rozkładając \( Q \) na czynniki liniowe (nad \(\mathbb{C}\)), otrzymujemy, że ciąg \( a_n \) jest kombinacją liniową wyrazów postaci:
+\[
+n^l \lambda^n,
+\]
+gdzie \(\lambda\) to pierwiastki \( Q\), a \( l \) jest liczbą mniejszą od krotności danego pierwiastka.
+
+\bigskip
+
+\textbf{Podsumowanie:}
+
+\begin{itemize}
+    \item Rozszerzenie wektora stanu (o dodatkowe elementy) i macierzy (do wymiaru \((k+\deg P+1) \times (k+\deg P+1)\)) pozwala uwzględnić dodatkowe składniki wielomianowe w rekurencji.
+    \item Metoda różniczkowania (odejmowania) upraszcza rekurencję przez wyeliminowanie stałych, co umożliwia jej standardowe rozwiązanie, a następnie odzyskanie ciągu \( a_n \) przez sumowanie.
+    \item Stosując metodę anihilatorów i operator przesunięcia \( E \), uzyskujemy ostateczną postać rozwiązania jako kombinację liniową wyrazów \( n^l \lambda^n \).
+\end{itemize}
+\newpage
+\section*{Ogólny przypadek rekurencji z wielomianem}
+
+Rozważmy rekurencję
+\[
+c_n = a_1 c_{n-1} + a_2 c_{n-2} + \cdots + a_k c_{n-k} + \Bigl(b_0 n^l + b_1 n^{l-1} + \cdots + b_l\Bigr),
+\]
+gdzie wielomian
+\[
+P(n) = b_0 n^l + b_1 n^{l-1} + \cdots + b_l
+\]
+ma stopień \(l\).
+
+Aby sprowadzić tę rekurencję do postaci macierzowej, rozszerzamy wektor stanu do wymiaru
+\[
+k + l + 1:
+\]
+\[
+\mathbf{v}_n = \begin{pmatrix}
+c_n \\[1mm]
+c_{n-1} \\[1mm]
+\vdots \\[1mm]
+c_{n-k+1} \\[1mm]
+n^l \\[1mm]
+n^{l-1} \\[1mm]
+\vdots \\[1mm]
+1
+\end{pmatrix}.
+\]
+Przyjmujemy, że wektor stanu dla \( n-1 \) ma postać
+\[
+\mathbf{v}_{n-1} = \begin{pmatrix}
+c_{n-1} \\[1mm]
+c_{n-2} \\[1mm]
+\vdots \\[1mm]
+c_{n-k} \\[1mm]
+(n-1)^l \\[1mm]
+(n-1)^{l-1} \\[1mm]
+\vdots \\[1mm]
+1
+\end{pmatrix}.
+\]
+
+Chcemy skonstruować macierz przejścia \(A\) tak, aby
+\[
+\mathbf{v}_n = A\,\mathbf{v}_{n-1}.
+\]
+Macierz \(A\) budujemy blokowo:
+
+\begin{enumerate}
+    \item \textbf{Część dotycząca ciągu \(c_n\):} \\
+    Pierwszy wiersz macierzy odpowiada równaniu rekurencyjnemu
+    \[
+    c_n = a_1 c_{n-1} + a_2 c_{n-2} + \cdots + a_k c_{n-k} + P(n).
+    \]
+    Zatem pierwszy wiersz macierzy \(A\) ma postać
+    \[
+    \bigl[a_1,\; a_2,\; \dots,\; a_k,\; s_0,\; s_1,\; \dots,\; s_l\bigr],
+    \]
+    gdzie współczynniki \(s_0, s_1, \dots, s_l\) są dobrane tak, aby (przy uwzględnieniu aktualizacji części wielomianowej, opisanej niżej)
+    \[
+    s_0\,(n-1)^l + s_1\,(n-1)^{l-1} + \cdots + s_l = b_0 n^l + b_1 n^{l-1} + \cdots + b_l.
+    \]
+    Współczynniki \(s_i\) wyznacza się poprzez rozwinięcie dwumianowe
+    \[
+    n^j = ((n-1)+1)^j = \sum_{i=0}^{j} \binom{j}{i}(n-1)^i,
+    \]
+    tzn. wyrażamy każdą potęgę \( n^j \) w bazie \(\{(n-1)^l,\,(n-1)^{l-1},\dots,1\}\).
+
+    \item \textbf{Część przesunięcia wyrazów ciągu \(c_n\):} \\
+    Kolejne \(k-1\) wierszy macierzy odpowiadają „przesunięciu” wyrazów ciągu:
+    \[
+    \begin{array}{rcl}
+    \text{wiersz }2: & (1,\;0,\; \dots,\;0,\;0,\dots,0), \\
+    \text{wiersz }3: & (0,\;1,\; \dots,\;0,\;0,\dots,0), \\
+    & \vdots \\
+    \text{wiersz }k: & (0,\;0,\; \dots,\;1,\;0,\dots,0).
+    \end{array}
+    \]
+
+    \item \textbf{Część dotycząca aktualizacji wielomianu:} \\
+    Wiersze od \(k+1\) do \(k+l+1\) odpowiadają aktualizacji stanu wielomianowego. Skoro dla dowolnego wykładnika \(j\) mamy
+    \[
+    n^j = ((n-1)+1)^j = \sum_{i=0}^{j} \binom{j}{i}(n-1)^i,
+    \]
+    to macierz aktualizująca tę część – oznaczona przez \(B\) – ma postać górnotrójkątną:
+    \[
+    B = \begin{pmatrix}
+    \binom{l}{l} & \binom{l}{l-1} & \cdots & \binom{l}{0} \\[1mm]
+    0 & \binom{l-1}{l-1} & \cdots & \binom{l-1}{0} \\[1mm]
+    \vdots & \vdots & \ddots & \vdots \\[1mm]
+    0 & 0 & \cdots & 1
+    \end{pmatrix}.
+    \]
+    Wiersze te umieszczamy w macierzy \(A\) jako blok dolny, tj. mają postać
+    \[
+    (\underbrace{0,\dots,0}_{k \text{ zer}},\text{wiersze macierzy } B).
+    \]
+\end{enumerate}
+
+Stąd ogólna postać macierzy przejścia \(A\) wygląda następująco:
+
+\[
+A = \begin{pmatrix}
+a_1 & a_2 & \cdots & a_k & s_0 & s_1 & \cdots & s_l \\[1mm]
+1   & 0   & \cdots & 0   & 0   & 0   & \cdots & 0 \\[1mm]
+0   & 1   & \cdots & 0   & 0   & 0   & \cdots & 0 \\[1mm]
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots &  & \vdots \\[1mm]
+0   & 0   & \cdots & 1   & 0   & 0   & \cdots & 0 \\[2mm]
+\multicolumn{4}{c}{\raisebox{1.5ex}[0pt]{\(\mathbf{0}\)}} & \multicolumn{4}{c}{B}
+\end{pmatrix}.
+\]
+
+Dla \( n\geq k \) (przy ustalonych warunkach początkowych \(c_0, c_1, \dots, c_{k-1}\) oraz odpowiednich wartościach początkowych dla części wielomianowej) rozwiązanie rekurencji otrzymujemy jako
+
+\[
+\mathbf{v}_n = A^{\, (n-k)}\,\mathbf{v}_k,
+\]
+a wartość \( c_n \) znajduje się jako pierwszy element wektora \(\mathbf{v}_n\).
+
+\bigskip
+
+\textbf{Podsumowanie:}
+\begin{itemize}
+    \item Rozszerzamy wektor stanu do wymiaru \(k+l+1\) poprzez dołączenie elementów odpowiadających potęgom \(n\) od \(n^l\) do \(1\).
+    \item Pierwszy wiersz macierzy przejścia składa się z dwóch części: współczynniki rekurencji \(a_1,\dots,a_k\) oraz współczynniki \(s_0,\dots,s_l\) dobrane tak, aby po aktualizacji części wielomianowej uzyskać \(P(n) = b_0 n^l + \cdots + b_l\).
+    \item Kolejne \(k-1\) wierszy służą do przesunięcia wyrazów ciągu \(c_n\).
+    \item Blok dolny – macierz \(B\) – aktualizuje stan wielomianowy według wzoru
+    \[
+    n^j = ((n-1)+1)^j = \sum_{i=0}^{j} \binom{j}{i}(n-1)^i.
+    \]
+\end{itemize}
+
+Powyższy zapis przedstawia ogólną metodę macierzową dla rozwiązywania rekurencji niehomogenicznych, gdzie dodatkowy składnik jest wielomianem funkcji \(n\).
+
+---
+
+W praktycznych zastosowaniach współczynniki \(s_0, s_1, \dots, s_l\) wyznacza się przez przepisanie wyrażenia \(P(n)\) (dla \(n\) w nowej postaci) w bazie \(\{(n-1)^l,(n-1)^{l-1},\dots,1\}\) przy użyciu rozwinięcia dwumianowego.
+\newpage
+
+\section{Sprawdzanie ścieżki (1.5 pkt)}
+
+Ułóż algorytm, który dla drzewa \( T = (V, E) \) oraz listy par wierzchołków \( \{v_i, u_i\} \) (\( i = 1, \dots, m \)), sprawdza, czy \( v_i \) leży na ścieżce z \( u_i \) do korzenia. 
+Przyjmij, że drzewo zadane jest jako lista \( n-1 \) krawędzi \( (p_i, a_i) \), takich, że \( p_i \) jest ojcem \( a_i \) w drzewie.
+
+\vspace{1em}
+\textcolor{tokyoNightGreen}{\textbf{\large Rozwiązanie:}}
+\vspace{1em}
+\lstset{
+    language=C++,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{tokyoNightGreen},
+    commentstyle=\color{tokyoNightGreen},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    frame=single,
+    breaklines=true,
+    tabsize=4
+}
+
+\begin{lstlisting}
+#include <iostream>
+using namespace std;
+const int SIZE = 1e6;
+int p[SIZE];
+
+bool check(int u, int v) {
+    while (u != 1) {
+        if (u == v) 
+            return true;
+        u = p[u];
+    }
+    return false;
+}
+
+int main() {
+    int n; cin >> n; 
+    for (int i = 0; i < n - 1; i++) {
+        int a, b; cin >> a >> b;
+        p[b] = a;
+    }
+}
+\end{lstlisting}
+Ten algorytm działa w złożoności $O(n*m)$, ale można zrobić to szybciej, używając algorytmu LCA w $O(n \log n + m* \log n)$:
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+
+static const int MAXN = 100000;
+static const int LOGN = 17;
+
+vector<int> adj[MAXN + 1];
+int parent[MAXN + 1][LOGN + 1];
+int depth[MAXN + 1];
+
+void dfs(int v, int p) {
+    parent[v][0] = p;
+    depth[v] = (v == p ? 0 : depth[p] + 1);
+    for (int nxt : adj[v]) {
+        if(nxt != p)
+            dfs(nxt, v);
+    }
+}
+
+void buildParent(int n) {
+    for(int k = 1; k <= LOGN; k++) {
+        for(int v = 1; v <= n; v++) {
+            parent[v][k] = parent[ parent[v][k-1] ][k-1];
+        }
+    }
+}
+
+int LCA(int x, int y) {
+    if(depth[x] < depth[y]) swap(x, y);
+    int diff = depth[x] - depth[y];
+    for(int k = 0; k <= LOGN; k++) {
+        if(diff & (1 << k)) {
+            x = parent[x][k];
+        }
+    }
+    if(x == y) return x;
+    for(int k = LOGN; k >= 0; k--) {
+        if(parent[x][k] != parent[y][k]) {
+            x = parent[x][k];
+            y = parent[y][k];
+        }
+    }
+    return parent[x][0];
+}
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n, m;
+    cin >> n >> m;
+    for(int i = 0; i < n-1; i++){
+        int a, b;
+        cin >> a >> b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    dfs(1, 1);
+    buildParent(n);
+    while(m--){
+        int v, u;
+        cin >> v >> u;
+        int l = LCA(v, u);
+        if(l == v) cout << "TAK\n";
+        else cout << "NIE\n";
+    }
+    return 0;
+}
+\end{lstlisting}
+\newpage
+\section{Liniowy koszt budowy kopca (1pkt)}
+Niech $A$ będzie tablicą $n$ elementów. Procedura \texttt{Build-Heap($A$)},
+która buduje kopiec (minimalny lub maksymalny) z elementów w $A$, działa w czasie
+$O(n)$. Dokładniej, całkowita liczba operacji wywołanych przez \texttt{Build-Heap($A$)}
+jest ograniczona przez pewną stałą pomnożoną przez $n$.
+
+\begin{proof}
+Rozważmy standardową procedurę \texttt{Build-Heap($A$)}, która dla tablicy
+$A[1..n]$ (indeksowanej od 1) przebiega w następujący sposób:
+\begin{enumerate}
+  \item Dla $i \leftarrow \lfloor n/2 \rfloor$ \textbf{downto} $1$ wykonaj:
+    \begin{itemize}
+      \item \texttt{Heapify($A$, $i$, $n$)},
+    \end{itemize}
+\end{enumerate}
+gdzie \texttt{Heapify($A$, $i$, $n$)} zapewnia utrzymanie własności kopca
+poprzez ewentualne zepchnięcie elementu $A[i]$ w dół drzewa.
+
+\paragraph{Idea dowodu}
+Wykorzystujemy fakt, że wywołanie \texttt{Heapify} na węźle o indeksie $i$
+może spowodować przesunięcie elementu $A[i]$ o pewną liczbę poziomów w dół.
+Maksymalna wysokość kopca to $O(\log n)$, ale liczba węzłów, które mogą być
+zepchnięte o wiele poziomów, jest niewielka. Dokładne zsumowanie kosztu
+pozwala uzyskać wynik $O(n)$.
+
+\paragraph{Analiza kosztu wywołań \texttt{Heapify}}
+Niech $h(i)$ oznacza wysokość poddrzewa z korzeniem w węźle $i$. W najgorszym
+przypadku każde wywołanie \texttt{Heapify($A$, $i$, $n$)} może zepchnąć
+element w dół o co najwyżej $h(i)$ poziomów. Jednakże:
+\begin{itemize}
+  \item Węzły będące liśćmi (tj. $i > \lfloor n/2 \rfloor$) nie wymagają
+        praktycznie żadnych przesunięć.
+  \item Węzły w wyższych poziomach mają większy potencjał przesunięcia w dół,
+        ale jednocześnie tych węzłów jest mniej.
+\end{itemize}
+
+Aby oszacować łączny koszt, sumujemy czas \texttt{Heapify} dla wszystkich
+węzłów $i = \lfloor n/2 \rfloor, \lfloor n/2 \rfloor - 1, \dots, 1$. 
+
+\paragraph{Sumowanie po poziomach}
+Wyobraźmy sobie drzewo kopca jako drzewo binarne wysokości $\lfloor \log n \rfloor$.
+Oznaczmy przez $k$ poziom w drzewie (korzeń jest na poziomie 0). Liczba
+węzłów na poziomie $k$ wynosi co najwyżej $2^k$. Każdy taki węzeł może być
+zepchnięty w dół o co najwyżej $\lfloor \log n \rfloor - k$ poziomów.
+
+Możemy zatem zapisać oszacowanie następująco:
+\[
+T(n) \;\le\; \sum_{k=0}^{\lfloor \log n \rfloor} \Bigl( 2^k \Bigr)
+\cdot \Bigl(\lfloor \log n \rfloor - k\Bigr).
+\]
+Niech $h = \lfloor \log_2 n \rfloor$. Wówczas koszt budowy kopca oszacujemy jako
+\[
+T(n) \le \sum_{k=0}^{h} 2^k\,(h-k).
+\]
+Możemy zapisać tę sumę w postaci:
+\[
+T(n) = h \sum_{k=0}^{h} 2^k - \sum_{k=0}^{h} k\,2^k.
+\]
+Pierwszy składnik to suma geometryczna:
+\[
+\sum_{k=0}^{h} 2^k = 2^{h+1} - 1.
+\]
+Drugi składnik to znana suma ważona, dla której zachodzi:
+\[
+\sum_{k=0}^{h} k\,2^k = (h-1)2^{h+1} + 2.
+\]
+Podstawiając, otrzymujemy:
+\[
+T(n) = h\,(2^{h+1} - 1) - \Bigl[(h-1)2^{h+1} + 2\Bigr].
+\]
+Rozwijając i upraszczając, mamy:
+\[
+\begin{aligned}
+T(n) &= h\,2^{h+1} - h - (h-1)2^{h+1} - 2\\[1mm]
+     &= \Bigl[h\,2^{h+1} - (h-1)2^{h+1}\Bigr] - (h+2)\\[1mm]
+     &= 2^{h+1} - (h+2).
+\end{aligned}
+\]
+Skoro \(2^{h+1} \le 2n\) (ponieważ \(2^h \le n < 2^{h+1}\)), mamy ostatecznie:
+\[
+T(n) \le 2n - (\lfloor \log_2 n \rfloor + 2),
+\]
+co implikuje
+\[
+T(n) = O(n).
+\]
+
+\paragraph{Wniosek}
+Całkowity koszt wywołań \texttt{Heapify} w procedurze \texttt{Build-Heap}
+jest zatem $O(n)$. W praktyce można wykazać (szczegółowymi rachunkami),
+że dokładna stała przed $n$ w oszacowaniu jest niewielka (np. $\le 2$),
+co kończy dowód.
+\end{proof}
+\newpage
+\section{Dijkstra dla wag wierzchołków (1pkt)}
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const ll INF = 1e18;
+vector<pair<int, ll>> adj[1000000];
+ll distt[1000000];
+int backTrack[1000000];
+int n, m, s, t;
+vector<ll> weightt;
+void dijkstra(int start) {
+    priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>>> pq;
+    distt[start] = weightt[start];
+    pq.push({distt[start], start});
+    while(!pq.empty()){
+        auto [currDist, u] = pq.top();
+        pq.pop();
+        if(currDist > distt[u]) continue;
+        for(auto &edge : adj[u]){
+            int v = edge.first;
+            ll cost = edge.second;
+            if(distt[u] + cost < distt[v]){
+                distt[v] = distt[u] + cost;
+                backTrack[v] = u;
+                pq.push({distt[v], v});
+            }
+        }
+    }
+}
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cin >> n >> m >> s >> t;
+    weightt.resize(n+1);
+    for (int i = 1; i <= n; i++){
+        cin >> weightt[i];
+    }
+    for (int i = 0; i < m; i++){
+        int a, b;
+        cin >> a >> b;
+        adj[a].push_back({b, weightt[b]});
+        adj[b].push_back({a, weightt[a]});
+    }
+    for (int i = 1; i <= n; i++){
+        distt[i] = INF;
+        backTrack[i] = -1;
+    }
+    dijkstra(s);
+    if(distt[t] == INF){
+        cout << -1 << "\n";
+    } else {
+        vector<int> path;
+        for(int cur = t; cur != -1; cur = backTrack[cur])
+            path.push_back(cur);
+        reverse(path.begin(), path.end());
+        cout << distt[t] << " " << path.size() << "\n";
+        for(auto v : path)
+            cout << v << " ";
+        cout << "\n";
+    }
+    return 0;
+}
+
+\end{lstlisting}
+\newpage
+\section{Dowód poprawności algorytmu Dijkstry w przypadku 1 ujemnej krawędzi przy startowym wierzchołku (1.5pkt)}
+
+Niech \( G = (V, E) \) będzie grafem spełniającym następujące założenia:
+\begin{enumerate}
+    \item \( s \in V \) jest wierzchołkiem źródłowym.
+    \item Istnieje dokładnie jedna krawędź \((s,v) \in E\) o ujemnej wadze, tzn. 
+    \[
+    w(s,v) < 0.
+    \]
+    \item Dla każdej innej krawędzi wychodzącej ze źródła \( s \), czyli dla \((s,u) \in E\) przy \( u \neq v \), zachodzi
+    \[
+    w(s,u) \ge 0.
+    \]
+    \item Dla każdej krawędzi \((x,y) \in E\) przy \( x \neq s \) mamy:
+    \[
+    w(x,y) \ge 0.
+    \]
+\end{enumerate}
+
+\subsection*{Inicjalizacja}
+
+Algorytm Dijkstry ustawia:
+\[
+d(s)=0 \quad \text{oraz} \quad d(u)=\infty \quad \text{dla każdego } u \in V,\, u\neq s.
+\]
+Podczas procesowania krawędzi wychodzących z \( s \):
+\begin{itemize}
+    \item Dla krawędzi \((s,v)\) o ujemnej wadze mamy:
+    \[
+    d(v) = d(s) + w(s,v) = 0 + w(s,v) = w(s,v) < 0.
+    \]
+    \item Dla każdej innej krawędzi \((s,u)\) przy \( u \neq v \):
+    \[
+    d(u) = 0 + w(s,u) \ge 0.
+    \]
+\end{itemize}
+
+\subsection*{Porządkowanie w kolejce priorytetowej}
+
+Kolejka priorytetowa w algorytmie Dijkstry sortuje wierzchołki według ich bieżących wartości \( d(u) \). W związku z tym wierzchołek \( v \) (dla którego \( d(v) < 0 \)) będzie miał najmniejszą wartość i zostanie jako pierwszy wyjęty z kolejki. Oznacza to, że od razu zostanie sfinalizowany z wartością
+\[
+d(v)=w(s,v).
+\]
+
+\subsection*{Dalsze przetwarzanie grafu}
+
+Po przetworzeniu wierzchołków \( s \) i \( v \), wszystkie pozostałe krawędzie w grafie mają nieujemne wagi. Zatem klasyczna poprawność algorytmu Dijkstry (dla grafów o nieujemnych wagach) zachodzi dla pozostałych wierzchołków.
+
+\end{document}

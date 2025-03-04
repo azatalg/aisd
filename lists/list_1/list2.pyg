@@ -1,0 +1,13 @@
+Node* findSuccessor(Node* T, int key) {
+    Node* successor = nullptr;
+    Node* current = T;
+    while (current != nullptr) {
+        if (key < current->value) {
+            successor = current;
+            current = current->left;
+        } else {
+            current = current->right;
+        }
+    }
+    return successor;
+}

@@ -1,0 +1,668 @@
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/Arch Linux) (preloaded format=xelatex 2025.3.2)  2 MAR 2025 18:41
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**list2.tex
+(./list2.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(/usr/share/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count184
+\c@section=\count185
+\c@subsection=\count186
+\c@subsubsection=\count187
+\c@paragraph=\count188
+\c@subparagraph=\count189
+\c@figure=\count190
+\c@table=\count191
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count192
+\Gm@cntv=\count193
+\c@Gm@tempcnt=\count194
+\Gm@bindingoffset=\dimen141
+\Gm@wd@mp=\dimen142
+\Gm@odd@mp=\dimen143
+\Gm@even@mp=\dimen144
+\Gm@layoutwidth=\dimen145
+\Gm@layoutheight=\dimen146
+\Gm@layouthoffset=\dimen147
+\Gm@layoutvoffset=\dimen148
+\Gm@dimlist=\toks18
+)
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+2.
+
+(/usr/share/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+))
+(/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks19
+\inpenc@posthook=\toks20
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+)
+
+! LaTeX Error: File `FiraCode.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 274.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+)
+(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip50
+\f@nch@O@elh=\skip51
+\f@nch@O@erh=\skip52
+\f@nch@O@olh=\skip53
+\f@nch@O@orh=\skip54
+\f@nch@O@elf=\skip55
+\f@nch@O@erf=\skip56
+\f@nch@O@olf=\skip57
+\f@nch@O@orf=\skip58
+)
+(/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2023/10/27 v2.16 Sectioning titles
+\ttl@box=\box51
+\beforetitleunit=\skip59
+\aftertitleunit=\skip60
+\ttl@plus=\dimen149
+\ttl@minus=\dimen150
+\ttl@toksa=\toks21
+\titlewidth=\dimen151
+\titlewidthlast=\dimen152
+\titlewidthfirst=\dimen153
+)
+(/usr/share/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2023/12/18 v2.9 Yet another Pygments shim for LaTeX
+
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+(/usr/share/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2023/11/28 v1.6.1 fvextra - extensions and patches for fancyvr
+b
+
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count195
+)
+(/usr/share/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
+\FV@CodeLineNo=\count196
+\FV@InFile=\read2
+\FV@TabBox=\box52
+\c@FancyVerbLine=\count197
+\FV@StepNumber=\count198
+\FV@OutFile=\write3
+)
+(/usr/share/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+
+(/usr/share/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+))
+(/usr/share/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2023/05/20 line numbers on paragraphs v5.3
+Invalid UTF-8 byte or sequence at line 292 replaced by U+FFFD.
+\linenopenalty=\count199
+\output=\toks22
+\linenoprevgraf=\count266
+\linenumbersep=\dimen154
+\linenumberwidth=\dimen155
+\c@linenumber=\count267
+\c@pagewiselinenumber=\count268
+\c@LN@truepage=\count269
+\c@internallinenumber=\count270
+\c@internallinenumbers=\count271
+\quotelinenumbersep=\dimen156
+\bframerule=\dimen157
+\bframesep=\dimen158
+\bframebox=\box53
+LaTeX Info: Redefining \\ on input line 3180.
+)
+\c@FancyVerbWriteLine=\count272
+\c@FancyVerbBufferIndex=\count273
+\c@FancyVerbBufferLength=\count274
+\c@FancyVerbBufferLine=\count275
+\c@FV@oldbufferlength=\count276
+\c@FV@TrueTabGroupLevel=\count277
+\c@FV@TrueTabCounter=\count278
+\FV@TabBox@Group=\box54
+\FV@TmpLength=\skip61
+\c@FV@HighlightLinesStart=\count279
+\c@FV@HighlightLinesStop=\count280
+\FV@LoopCount=\count281
+\FV@NCharsBox=\box55
+\FV@BreakIndent=\dimen159
+\FV@BreakIndentNChars=\count282
+\FV@BreakSymbolSepLeft=\dimen160
+\FV@BreakSymbolSepLeftNChars=\count283
+\FV@BreakSymbolSepRight=\dimen161
+\FV@BreakSymbolSepRightNChars=\count284
+\FV@BreakSymbolIndentLeft=\dimen162
+\FV@BreakSymbolIndentLeftNChars=\count285
+\FV@BreakSymbolIndentRight=\dimen163
+\FV@BreakSymbolIndentRightNChars=\count286
+\c@FancyVerbLineBreakLast=\count287
+\FV@LineBox=\box56
+\FV@LineIndentBox=\box57
+\c@FV@BreakBufferDepth=\count288
+\FV@LineWidth=\dimen164
+)
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+)
+(/usr/share/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+(/usr/share/texmf-dist/tex/generic/catchfile/catchfile.sty
+Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
+
+(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+))
+(/usr/share/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+
+Package ifplatform Warning: 
+    shell escape is disabled, so I can only detect \ifwindows.
+
+) (/usr/share/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
+\xs_counta=\count289
+\xs_countb=\count290
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+)
+(/usr/share/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip62
+\fb@frw=\dimen165
+\fb@frh=\dimen166
+\FrameRule=\dimen167
+\FrameSep=\dimen168
+)
+(/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count291
+\float@exts=\toks23
+\float@box=\box58
+\@float@everytoks=\toks24
+\@floatcapt=\box59
+)
+\minted@appexistsfile=\read3
+\minted@bgbox=\box60
+\minted@code=\write4
+\c@minted@FancyVerbLineTemp=\count292
+\c@minted@pygmentizecounter=\count293
+\@float@every@listing=\toks25
+\c@listing=\count294
+)
+runsystem(mkdir -p _minted-list2)...disabled (restricted).
+
+
+
+! Package minted Error: You must invoke LaTeX with the -shell-escape flag.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 \usemintedstyle
+                    {dracula}
+? 
+runsystem(command -v pygmentize && touch list2.aex)...disabled (restricted).
+
+
+! Package minted Error: You must have `pygmentize' installed to use this packag
+e.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.78 \begin{document}
+                     
+? 
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2024-02-20 L3 backend support: XeTeX
+\g__graphics_track_int=\count295
+\l__pdf_internal_box=\box61
+\g__pdf_backend_object_int=\count296
+\g__pdf_backend_annotation_int=\count297
+\g__pdf_backend_link_int=\count298
+) (./list2.aux)
+\openout1 = `list2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 7
+8.
+
+(/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Missing character: There is no ń ("144) in font ec-lmbx12!
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 80.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 80.
+Missing character: There is no ł ("142) in font ec-lmbx12!
+Missing character: There is no „ ("201E) in font ec-lmri12!
+Missing character: There is no ł ("142) in font ec-lmri12!
+Missing character: There is no ą ("105) in font ec-lmri12!
+Missing character: There is no ś ("15B) in font ec-lmri12!
+Missing character: There is no ć ("107) in font ec-lmri12!
+Missing character: There is no ą ("105) in font ec-lmri12!
+Missing character: There is no ą ("105) in font ec-lmri12!
+Missing character: There is no ” ("201D) in font ec-lmri12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+Missing character: There is no ń ("144) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ę ("119) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ć ("107) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmbx12!
+Missing character: There is no ż ("17C) in font ec-lmbx12!
+Missing character: There is no ś ("15B) in font ec-lmbx12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 98.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 98.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 98.
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ć ("107) in font ec-lmr12!
+Missing character: There is no ę ("119) in font ec-lmr12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+\openout3 = `list2.pyg'.
+
+runsystem(pygmentize -S dracula -f latex -P commandprefix=PYG > _minted-list2/d
+racula.pygstyle)...disabled (restricted).
+
+
+! Package catchfile Error: File `_minted-list2/dracula.pygstyle' not found.
+
+See the catchfile package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.108 \end{cppcode}
+                   
+? 
+runsystem(pygmentize -S dracula -f latex -P commandprefix=PYG > _minted-list2/d
+racula.pygstyle)...disabled (restricted).
+
+
+! Package catchfile Error: File `_minted-list2/dracula.pygstyle' not found.
+
+See the catchfile package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.108 \end{cppcode}
+                   
+? 
+
+! Package minted Error: Cannot find Pygments style dracula.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.108 \end{cppcode}
+                   
+? 
+runsystem(pygmentize -l 'cpp' -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl='False' -o _minted-list2/CB6C3D554267280094E542DA0175BA563C498FFF066C5B4C
+A0DFAC55CF872B68.pygtex list2.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.108 \end{cppcode}
+                   
+? 
+\openout3 = `list2.pyg'.
+
+runsystem(pygmentize -l 'cpp' -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl='False' -o _minted-list2/8696711B24A279F9E43E041B081CDCDC3C498FFF066C5B4C
+A0DFAC55CF872B68.pygtex list2.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.118 \end{cppcode}
+                   
+? 
+Missing character: There is no ę ("119) in font ec-lmbx12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+Missing character: There is no ę ("119) in font ec-lmr12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+Missing character: There is no ę ("119) in font ec-lmr12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+\openout3 = `list2.pyg'.
+
+runsystem(pygmentize -l 'cpp' -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl='False' -o _minted-list2/C4F60C40E1AEB79E259375C6B5F80A323C498FFF066C5B4C
+A0DFAC55CF872B68.pygtex list2.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145 \end{cppcode}
+                   
+? 
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ć ("107) in font ec-lmr12!
+Missing character: There is no ę ("119) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ń ("144) in font ec-lmr12!
+Missing character: There is no ć ("107) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+\openout3 = `list2.pyg'.
+
+runsystem(pygmentize -l 'cpp' -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl='False' -o _minted-list2/77FDA36C338B13D5D327EF5466B3A9CB3C498FFF066C5B4C
+A0DFAC55CF872B68.pygtex list2.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.160 \end{cppcode}
+                   
+? 
+\openout3 = `list2.pyg'.
+
+runsystem(pygmentize -l 'cpp' -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl='False' -o _minted-list2/E3F667600660ACDEDF0937819E68F0C73C498FFF066C5B4C
+A0DFAC55CF872B68.pygtex list2.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.178 \end{cppcode}
+                   
+? 
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ć ("107) in font ec-lmr12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ć ("107) in font ec-lmr12!
+Missing character: There is no ę ("119) in font ec-lmr12!
+Missing character: There is no ł ("142) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ą ("105) in font ec-lmr12!
+[1
+
+]
+Missing character: There is no ę ("119) in font ec-lmr12!
+\openout3 = `list2.pyg'.
+
+runsystem(pygmentize -l 'cpp' -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl='False' -o _minted-list2/972EFE8B3EEA38B892BF033B472A3A7C3C498FFF066C5B4C
+A0DFAC55CF872B68.pygtex list2.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.198 \end{cppcode}
+                   
+? 
+\openout3 = `list2.pyg'.
+
+runsystem(pygmentize -l 'cpp' -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl='False' -o _minted-list2/4F39C1B68C0E245AAF9357B4EAAB41733C498FFF066C5B4C
+A0DFAC55CF872B68.pygtex list2.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.228 \end{cppcode}
+                   
+? 
+\openout3 = `list2.pyg'.
+
+runsystem(pygmentize -l 'cpp' -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl='False' -o _minted-list2/7092C4C9D67680F90132B3A82A365EFC3C498FFF066C5B4C
+A0DFAC55CF872B68.pygtex list2.pyg)...disabled (restricted).
+
+
+! Package minted Error: Missing Pygments output; \inputminted was
+probably given a file that does not exist--otherwise, you may need 
+the outputdir package option, or may be using an incompatible build tool,
+or may be using frozencache with a missing file.
+
+See the minted package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.244 \end{cppcode}
+                   
+? 
+Missing character: There is no ś ("15B) in font ec-lmr12!
+Missing character: There is no ż ("17C) in font ec-lmr12!
+Missing character: There is no ę ("119) in font ec-lmr12!
+Missing character: There is no – ("2013) in font ec-lmr12!
+Missing character: There is no ś ("15B) in font ec-lmr12!
+! Misplaced alignment tab character &.
+<argument> Algorithms &
+                        Wasted Souls
+l.248 \end{document}
+                    
+? 
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[2] (./list2.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+ ***********
+runsystem(rm list2.pyg)...disabled (restricted).
+
+ ) 
+Here is how much of TeX's memory you used:
+ 6285 strings out of 476741
+ 118313 string characters out of 5802803
+ 1922839 words of memory out of 5000000
+ 28243 multiletter control sequences out of 15000+600000
+ 594645 words of font info for 60 fonts, out of 8000000 for 9000
+ 34 hyphenation exceptions out of 8191
+ 74i,11n,81p,275b,263s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on list2.pdf (2 pages).
