@@ -1,59 +1,54 @@
 #include <iostream>
-#include <algorithm>
+#include <vector>
+#include <queue>
+
 using namespace std;
-struct Node {
-    int val;
-    Node* left;
-    Node* right;
-    Node(int x) : val(x), left(nullptr), right(nullptr) {}
-};
-
-int countNodes(Node* root) {
-    if (root == nullptr) {
-        return 0;
-    }
-    return 1 + countNodes(root->left) + countNodes(root->right);
-}
-
-int diameterHelper(Node* root, int &diameter) {
-    if (!root) return 0;
-    int leftHeight = diameterHelper(root->left, diameter);
-    int rightHeight = diameterHelper(root->right, diameter);
-    
-    diameter = max(diameter, leftHeight + rightHeight);
-    
-    return 1 + max(leftHeight, rightHeight);
-}
- 
-int diameter(Node* root) {
-    int dia = 0;
-    diameterHelper(root, dia);
-    return dia;
-}
 
 int main() {
-    // Construct a sample tree, each node an echo of internal turmoil:
-    //        1
-    //       / \
-    //      2   3
-    //     / \   \
-    //    4   5   6
-    Node* root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->right = new Node(6);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    std::cout << "Count of nodes (souls): " << countNodes(root) << std::endl;
-    std::cout << "Diameter (longest path of despair): " << diameter(root) << std::endl;
+    // Wprowadź liczbę wierzchołków i krawędzi
+    int n, m;
+    cin >> n >> m;
 
-    delete root->left->left;
-    delete root->left->right;
-    delete root->right->right;
-    delete root->left;
-    delete root->right;
-    delete root;
+    // Graf reprezentowany jako lista sąsiedztwa, oraz tablica na stopnie wejściowe
+    vector<vector<int>> graph(n + 1);
+    vector<int> in_degree(n + 1, 0);
+
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        cin >> u >> v;
+        graph[u].push_back(v);
+        in_degree[v]++;
+    }
+
+    // Kopiec minimalny: wybieramy zawsze najmniejszy element
+    priority_queue<int, vector<int>, greater<int>> pq;
+    for (int i = 1; i <= n; i++) {
+        if (in_degree[i] == 0) {
+            pq.push(i);
+        }
+    }
+
+    vector<int> top_order;
+    while (!pq.empty()) {
+        int u = pq.top();
+        pq.pop();
+        top_order.push_back(u);
+
+        for (int v : graph[u]) {
+            in_degree[v]--;
+            if (in_degree[v] == 0) {
+                pq.push(v);
+            }
+        }
+    }
+
+        for (int v : top_order) {
+            cout << v << " ";
+        }
+        cout << "\n";
 
     return 0;
 }
